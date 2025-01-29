@@ -1,2 +1,2 @@
 # Space-Shooter
- A small 2D project for my studies
+ A small 2D project for my studies.
