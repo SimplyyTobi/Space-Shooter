@@ -3430,6 +3430,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 638991560}
     m_Modifications:
+    - target: {fileID: 295691132713630785, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 295691132713630785, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 295691132713630785, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 295691132713630785, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 295691132713630785, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 883199506403220244, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1cf83f71970b5e64cae91211f3105ec2, type: 3}
+    - target: {fileID: 883199506403220244, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 883199506403220244, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.83323216
+      objectReference: {fileID: 0}
+    - target: {fileID: 883199506403220244, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.30704877
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480858975223973109, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3085143009705547091, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3474,6 +3514,10 @@ PrefabInstance:
       propertyPath: energyBar
       value: 
       objectReference: {fileID: 297148683}
+    - target: {fileID: 6642947643556610204, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Radius
+      value: 0.63
+      objectReference: {fileID: 0}
     - target: {fileID: 7915284596269102153, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
       propertyPath: m_Enabled
       value: 1
