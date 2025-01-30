@@ -5,6 +5,8 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float horizontalSpeed = 3f;
+    private float horizontalDirection;
 
     private float rotationDirection;
     [SerializeField] private float rotationSpeed;
@@ -16,7 +18,7 @@ public class Asteroid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RandomizeRotation();
+        RandomizeMovement();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class Asteroid : MonoBehaviour
         #region Movement
         //Not using Translate() for the movement here, since it is relative to the object's local coordinate system which constantly changes the direction due to constant rotation
         //Instead I simply constantly update the object's position
-        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        transform.position += Vector3.down * moveSpeed * Time.deltaTime + Vector3.right * horizontalDirection * horizontalSpeed * Time.deltaTime;
 
         transform.Rotate(Vector3.forward * rotationDirection * rotationSpeed * Time.deltaTime);
         #endregion
@@ -51,13 +53,16 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    private void RandomizeRotation()
+    private void RandomizeMovement()
     {
         //Randomize Rotation Direction (-1 or 1)
         rotationDirection = Random.Range(0, 2) * 2 - 1;
 
         //Randomize Rotation Speed
         rotationSpeed = Random.Range(rotationSpeedMin, rotationSpeedMax);
+
+        //Randomize Horizontal Movement Direction
+        horizontalDirection = Random.Range(0, 2) * 2 - 1;
     }
 
     public void IncreaseMoveSpeed(float amount)

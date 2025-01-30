@@ -99,6 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  horizontalSpeed: 0.5
+  rotationSpeed: 0
+  rotationSpeedMax: 20
+  rotationSpeedMin: 50
 --- !u!58 &8104526954608214350
 CircleCollider2D:
   m_ObjectHideFlags: 0
