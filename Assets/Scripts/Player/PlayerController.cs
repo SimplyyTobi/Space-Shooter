@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isAlive = true;
 
     private PlayerHealth playerHealth;
+    private TrailRenderer boostTrailRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,14 @@ public class PlayerController : MonoBehaviour
             playerHealth.OnPlayerDied += HandlePlayerDeath;
         }
 
+        boostTrailRenderer = GetComponentInChildren<TrailRenderer>();
+        if (boostTrailRenderer == null)
+        {
+            Debug.LogError("Trail Renderer in Player Child not found!");
+        }
+
         bool isAlive = true;
+        boostTrailRenderer.enabled = false;
     }
 
     // Update is called once per frame
@@ -111,10 +119,12 @@ public class PlayerController : MonoBehaviour
     {
         defaultSpeed = moveSpeed;
         moveSpeed *= speedMultiplier;
+        boostTrailRenderer.enabled = true;
 
         yield return new WaitForSeconds(duration);
 
         moveSpeed = defaultSpeed;
+        boostTrailRenderer.enabled = false;
     }
 
     #endregion
