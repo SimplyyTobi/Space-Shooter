@@ -49,7 +49,7 @@ public class LaserBehaviour : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (other.CompareTag("Asteroid") && !isEnemyLaser)
+        if (other.CompareTag("Asteroid"))
         {
             if (other != null)
             {
