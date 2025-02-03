@@ -2962,6 +2962,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623289922}
   m_CullTransparentMesh: 1
+--- !u!1001 &1916866395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4808494097162555297, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_Name
+      value: HealthItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.09207296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.7625813
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376978896856686467, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fd4e1563cb20224d9c543e7334ff763, type: 3}
 --- !u!1 &1979384568
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,6 +3526,30 @@ PrefabInstance:
       propertyPath: energyBar
       value: 
       objectReference: {fileID: 297148683}
+    - target: {fileID: 3419903361512909637, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: damageColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419903361512909637, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: damageColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419903361512909637, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: damageColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735970207654458674, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735970207654458674, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735970207654458674, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8989581801868727249, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3491,3 +3572,4 @@ SceneRoots:
   - {fileID: 1027348233}
   - {fileID: 638991560}
   - {fileID: 816995647}
+  - {fileID: 1916866395}

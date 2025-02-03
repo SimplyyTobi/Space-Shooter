@@ -41,12 +41,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("SpawnManager (script) not found in GameManager!");
         }
-
-        asteroid = FindObjectOfType<Asteroid>();
-        if (asteroid != null)
-        {
-            Debug.LogError("Asteroid (script) not found in GameManager!");
-        }
     }
 
     private void Update()
