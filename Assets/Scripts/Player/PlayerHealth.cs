@@ -25,15 +25,17 @@ public class PlayerHealth : MonoBehaviour
     public delegate void PlayerDiedHandler();
     public event PlayerDiedHandler OnPlayerDied;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
-            Debug.LogError("Sprite Renderer on Player Object not found!");
+            Debug.LogError("Sprite Renderer not found on Player!");
         }
-
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         currentHealth = maxHealth;
         UpdateEnergyBar();
     }

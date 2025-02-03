@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float enemySpawnRateDecreasePerLevel = 0.65f;
     [SerializeField] private float asteroidSpeedIncrease = 2.5f;
 
-    void Start()
+    private void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
         if (uiManager == null)
         {
-            Debug.LogError("UIManager (script) not found in GameManager!");
+            Debug.LogError("UIManager (script) not found on GameManager!");
         }
-        
+
         playerHealth = FindObjectOfType<PlayerHealth>();
         if (playerHealth != null)
         {
@@ -33,13 +33,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("PlayerHealth (script) not found in GameManager!");
+            Debug.LogError("PlayerHealth (script) not found on GameManager!");
         }
 
         spawnManager = FindObjectOfType<SpawnManager>();
         if (spawnManager == null)
         {
-            Debug.LogError("SpawnManager (script) not found in GameManager!");
+            Debug.LogError("SpawnManager (script) not found on GameManager!");
         }
     }
 

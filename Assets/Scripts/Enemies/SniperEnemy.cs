@@ -18,7 +18,7 @@ public class SniperEnemy : EnemyBase
         get { return scoreValue; }
     }
 
-    private void Awake()
+    protected override void Start()
     {
         stayPointY = Random.Range(3.5f, 4f);
     }

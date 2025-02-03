@@ -25,7 +25,8 @@ public abstract class EnemyBase : MonoBehaviour
     protected UIManager uiManager;
 
     #region Methods
-    protected virtual void Start()
+
+    protected virtual void Awake()
     {
         if (playerPos == null)
         {
@@ -36,20 +37,25 @@ public abstract class EnemyBase : MonoBehaviour
             }
             else
             {
-                Debug.LogError("PlayerObject not found in Enemy Base (script)!");
+                Debug.LogError("PlayerObject not found on Enemy Base (script)!");
             }
         }
 
         uiManager = FindObjectOfType<UIManager>();
-
         if (uiManager == null)
         {
-            Debug.LogError("UIManager not found in Enemy Base (script)!");
+            Debug.LogError("UIManager not found on Enemy Base (script)!");
         }
+
         if (laserPrefab == null)
         {
             Debug.LogError("Enemy Base (script) is missing a laserPrefab reference!");
         }
+    }
+
+    protected virtual void Start()
+    {
+
     }
 
     protected virtual void Update()

@@ -17,7 +17,7 @@ public abstract class ItemBase : MonoBehaviour
             popUpText = player.GetComponent<PlayerPopUpText>();
             if (popUpText == null)
             {
-                Debug.LogError("PlayerPopUpText (script) not found on player");
+                Debug.LogError("PlayerPopUpText (script) not found on Player!");
             }
         }
     }

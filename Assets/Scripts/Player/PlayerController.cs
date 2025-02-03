@@ -24,21 +24,28 @@ public class PlayerController : MonoBehaviour
     private PlayerHealth playerHealth;
     private TrailRenderer boostTrailRenderer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
             playerHealth.OnPlayerDied += HandlePlayerDeath;
         }
+        else
+        {
+            Debug.LogError("PlayerHealth (script) not found on Player!");
+        }
 
         boostTrailRenderer = GetComponentInChildren<TrailRenderer>();
         if (boostTrailRenderer == null)
         {
-            Debug.LogError("Trail Renderer in Player Child not found!");
+            Debug.LogError("Trail Renderer not found on Player Child!");
         }
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         bool isAlive = true;
         boostTrailRenderer.enabled = false;
     }
