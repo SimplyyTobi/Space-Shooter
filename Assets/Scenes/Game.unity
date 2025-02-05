@@ -772,46 +772,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248239989}
   m_CullTransparentMesh: 1
---- !u!1 &250211954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6628411866483663274, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-  m_PrefabInstance: {fileID: 3494684894795048404}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &250211958
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250211954}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.2}
-  m_Size: {x: 4.3, y: 0.45}
-  m_Direction: 1
 --- !u!1 &284861090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,44 +3470,17 @@ PrefabInstance:
       value: UFOBoss
       objectReference: {fileID: 0}
     - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.size
-      value: 6
+      propertyPath: moveSpeedNormal
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 718531697, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-    - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 576118416, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-    - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 1595661850, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-    - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: -510098321, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-    - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.data[4]
-      value: 
-      objectReference: {fileID: -1435469081, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-    - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.data[5]
-      value: 
-      objectReference: {fileID: -735032547, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-    - target: {fileID: 8391205932472879490, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: ufoSprites.Array.data[6]
-      value: 
-      objectReference: {fileID: -735032547, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+      propertyPath: moveSpeedEnraged
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6628411866483663274, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 250211958}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
 --- !u!1001 &6723174938525114955
 PrefabInstance:
