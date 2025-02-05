@@ -15,10 +15,14 @@ public class UFOController : MonoBehaviour
     private int healthDividedByFive;
     [SerializeField] private float moveSpeedNormal = 5f;
     [SerializeField] private float moveSpeedEnraged = 10f;
+    [SerializeField] private float movementRangeX = 3f;
+    private float moveSpeed;
     [SerializeField] private float attackIntervalNormal = 5f;
     [SerializeField] private float attackIntervalEnraged = 3f;
+    private float attackInterval;
 
-    private bool isEnraged = false;
+    [SerializeField] private bool isEnraged = false;
+    [SerializeField] private bool isAlive = true;
 
     private void Awake()
     {
@@ -35,6 +39,8 @@ public class UFOController : MonoBehaviour
         currentSpriteIndex = 0;
         healthDividedByFive = health / 5;
         healthBeforeNextSprite = healthDividedByFive;
+
+        StartCoroutine(StartMovement());
     }
 
     // Update is called once per frame
@@ -43,7 +49,6 @@ public class UFOController : MonoBehaviour
         
     }
 
-    [ContextMenu("Take Damage")]
     private void TakeDamage()
     {
         health--;                               //Boss health overall
@@ -77,6 +82,7 @@ public class UFOController : MonoBehaviour
 
     private void Die()
     {
+        isAlive = false;
         Debug.Log("Boss defeated!");
     }
 
@@ -86,6 +92,30 @@ public class UFOController : MonoBehaviour
         {
             Destroy(other.gameObject);
             TakeDamage();
+        }
+    }
+
+    private IEnumerator StartMovement()
+    {
+        Vector3 direction = Vector3.right;
+
+        while (isAlive)
+        {
+            moveSpeed = isEnraged ? moveSpeedEnraged : moveSpeedNormal;
+
+            transform.position += direction * moveSpeed * Time.deltaTime;
+
+            if (transform.position.x >= movementRangeX)
+            {
+                direction = Vector3.left;
+            }
+
+            else if (transform.position.x <= -movementRangeX)
+            {
+                direction = Vector3.right;
+            }
+
+            yield return null;
         }
     }
 }

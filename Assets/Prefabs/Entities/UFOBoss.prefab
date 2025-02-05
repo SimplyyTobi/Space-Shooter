@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 448488814983596829}
   - component: {fileID: 5467198080163751951}
   - component: {fileID: 8391205932472879490}
+  - component: {fileID: 4059501059009487710}
   m_Layer: 0
   m_Name: UFOBoss
   m_TagString: Enemy
@@ -97,3 +98,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b202051d0a580bf4a99d1e3bbbebf8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ufoSprites:
+  - {fileID: 718531697, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: 576118416, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: 1595661850, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: -510098321, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: -1435469081, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: -735032547, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  health: 25
+  moveSpeedNormal: 5
+  moveSpeedEnraged: 10
+  attackIntervalNormal: 5
+  attackIntervalEnraged: 3
+--- !u!70 &4059501059009487710
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628411866483663274}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.2}
+  m_Size: {x: 4.3, y: 0.45}
+  m_Direction: 1
