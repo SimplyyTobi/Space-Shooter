@@ -3465,22 +3465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4186539925978046177, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_Color.a
-      value: 0.49803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186539925978046177, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_Color.b
-      value: 0.7169812
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186539925978046177, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7169812
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186539925978046177, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_Color.r
-      value: 0.7169812
-      objectReference: {fileID: 0}
+    - target: {fileID: 4684680156517995790, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
+      propertyPath: enemyContainer
+      value: 
+      objectReference: {fileID: 741928515}
     - target: {fileID: 6628411866483663274, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
       propertyPath: m_Name
       value: UFOBoss
@@ -3568,7 +3556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4735970207654458674, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8989581801868727249, guid: 0af527e3e5d1c704ba2b1436dfe8a44a, type: 3}
       propertyPath: m_Name

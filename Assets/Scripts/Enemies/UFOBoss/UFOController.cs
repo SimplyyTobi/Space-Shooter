@@ -6,6 +6,8 @@ using UnityEngine;
 public class UFOController : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private UFOAttacks ufoAttacks;
+
     [SerializeField] private Sprite[] ufoSprites;
     private int currentSpriteIndex;
 
@@ -31,6 +33,12 @@ public class UFOController : MonoBehaviour
         {
             Debug.LogError("Sprite Renderer on UFOController (script) not found!");
         }
+
+        ufoAttacks = GetComponent<UFOAttacks>();
+        if (ufoAttacks == null)
+        {
+            Debug.LogError("UFOAttacks (script) on UFOController (script) not found!");
+        }
     }
 
     // Start is called before the first frame update
@@ -41,12 +49,7 @@ public class UFOController : MonoBehaviour
         healthBeforeNextSprite = healthDividedByFive;
 
         StartCoroutine(StartMovement());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartCoroutine(AttackLoop());
     }
 
     private void TakeDamage()
@@ -117,5 +120,36 @@ public class UFOController : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private IEnumerator AttackLoop()
+    {
+        while (isAlive)
+        {
+            attackInterval = isEnraged ? attackIntervalEnraged : attackIntervalNormal;
+
+            RandomAttack();
+
+            yield return new WaitForSeconds(attackInterval);
+        }
+    }
+
+    private void RandomAttack()
+    {
+        int attackIndex = Random.Range(0, 3);   //Three different attacks
+
+        switch(attackIndex)
+        {
+            //ToDo
+            case 0:
+                ufoAttacks.DeployAliens();
+                break;
+
+        }
+    }
+
+    public bool GetIsEnraged()
+    {
+        return isEnraged;
     }
 }

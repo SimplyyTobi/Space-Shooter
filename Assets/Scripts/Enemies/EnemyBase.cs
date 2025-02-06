@@ -106,7 +106,7 @@ public abstract class EnemyBase : MonoBehaviour
 
             TakeDamage();
         }
-    }
+    }   //Damage by Player and Player Lasers
     
     protected virtual void TakeDamage()
     {
