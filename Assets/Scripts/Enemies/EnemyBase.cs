@@ -4,30 +4,39 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    [SerializeField] protected GameObject laserPrefab;
-    [SerializeField] private Transform playerPos;
+    [SerializeField] private EnemyData enemyData;
 
-    [Header("Enemy Settings")]
-    [SerializeField] protected float moveSpeed = 3f;
-    [SerializeField] protected float minFireRate = 2f;
-    [SerializeField] protected float maxFireRate = 5f;
+    //Enemy Stats
+    protected int health;
+    protected float moveSpeed;
+    protected float minFireRate;
+    protected float maxFireRate;
+    protected int scoreValue;
+
     protected float fireRate;
     protected float fireTimer = 0;
-
-    protected Transform Player => playerPos;
-    protected abstract int Health { get; set; }
-    protected abstract int ScoreValue { get; }
 
     protected float borderXRange = 8f;
     protected float bottomBorder = -6f;
     protected float topBorder = 6.5f;
 
+    protected GameObject laserPrefab;
     protected UIManager uiManager;
+    protected Transform playerPos;
 
     #region Methods
 
     protected virtual void Awake()
     {
+        if (enemyData != null)
+        {
+            InitializeStats();
+        }
+        else
+        {
+            Debug.LogError($"{gameObject.name} is missing an EnemyData reference!");
+        }
+
         if (playerPos == null)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -79,7 +88,7 @@ public abstract class EnemyBase : MonoBehaviour
         fireTimer -= Time.deltaTime;
     }
 
-    protected virtual void HandleBorders()
+    protected virtual void HandleBorders()  //Respawn on top when leaving bottom of screen
     {
         if (transform.position.y <= bottomBorder)
         {
@@ -102,7 +111,7 @@ public abstract class EnemyBase : MonoBehaviour
         else if (other.CompareTag("PlayerLaser"))
         {
             Destroy(other.gameObject);
-            uiManager.AddScore(ScoreValue);
+            uiManager.AddScore(scoreValue);
 
             TakeDamage();
         }
@@ -110,12 +119,23 @@ public abstract class EnemyBase : MonoBehaviour
     
     protected virtual void TakeDamage()
     {
-        this.Health--;
+        this.health--;
 
-        if (this.Health <= 0)
+        if (this.health <= 0)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    protected void InitializeStats()
+    {
+        health = enemyData.health;
+        moveSpeed = enemyData.moveSpeed;
+        minFireRate = enemyData.minFireRate;
+        maxFireRate = enemyData.maxFireRate;
+        scoreValue = enemyData.scoreValue;
+
+        laserPrefab = enemyData.laserPrefab;
     }
 
     #endregion

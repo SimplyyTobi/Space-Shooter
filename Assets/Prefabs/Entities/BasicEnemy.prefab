@@ -98,14 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311cd3a704c406a4f844c9508d7044d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 3ee640090dfbd2744bad189b8f8211ff, type: 2}
   laserPrefab: {fileID: 5212038490469224170, guid: c0369a821153d9d48ad0cca191a90eba, type: 3}
   playerPos: {fileID: 0}
-  moveSpeed: 3
-  minFireRate: 2
-  maxFireRate: 5
-  health: 1
-  scoreValue: 10
   moveSpeedIncrease: 0.5
+  moveSpeedMax: 7
 --- !u!70 &4303866760565961635
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

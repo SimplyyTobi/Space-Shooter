@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class SniperEnemy : EnemyBase
 {
-    [SerializeField] private int health = 1;
-    [SerializeField] private int scoreValue = 20;
     private float stayPointY = 3.5f;
-
-    protected override int Health
-    {
-        get { return health; }
-        set { health = value; }
-    }
-    protected override int ScoreValue
-    {
-        get { return scoreValue; }
-    }
 
     protected override void Start()
     {
@@ -34,7 +22,7 @@ public class SniperEnemy : EnemyBase
             moveSpeed = 0;
         }
 
-        AimForTarget(Player);
+        AimForTarget(playerPos);
     }
 
     protected override void FireLaser()
