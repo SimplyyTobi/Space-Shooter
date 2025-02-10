@@ -3465,6 +3465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2500658051111241090, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4684680156517995790, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
       propertyPath: enemyContainer
       value: 
@@ -3472,6 +3476,14 @@ PrefabInstance:
     - target: {fileID: 6628411866483663274, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
       propertyPath: m_Name
       value: UFOBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089030601243847789, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089030601243847789, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,7 +5,6 @@ using UnityEngine;
 public class UFOAttacks : MonoBehaviour
 {
     private UFOController ufoController;
-    private SpriteRenderer raybeamSprite;
 
     [SerializeField] private GameObject miniUfoPrefab;
 
@@ -23,12 +22,6 @@ public class UFOAttacks : MonoBehaviour
             Debug.LogError("UFOController (script) on UFOAttacks (script) not found!");
         }
 
-        raybeamSprite = GetComponentInChildren<SpriteRenderer>();   //should get SpriteRenderer of RayBeam child object!
-        if (raybeamSprite == null)
-        {
-            Debug.LogError("Sprite Renderer from Raybeam on UFOAttacks (script) not found!");
-        }
-
         spawnArea = GetComponentInChildren<BoxCollider2D>();        //should get BoxCollider2D of SpawnZone child object!
         if (spawnArea == null)
         {
@@ -40,13 +33,8 @@ public class UFOAttacks : MonoBehaviour
     {
         int ufosAmount = ufoController.GetIsEnraged() ? ufoAmountEnraged : ufoAmountNormal;
 
-        //Turn Raybeam red
-        raybeamSprite.color = Color.red;
-
         //Spawn Aliens
         SpawnMiniUfos(ufosAmount);
-
-        raybeamSprite.color = Color.white;
     }
 
     private void SpawnMiniUfos(int amount)

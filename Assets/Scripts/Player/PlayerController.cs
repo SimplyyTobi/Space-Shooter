@@ -9,9 +9,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Settings")]
     [SerializeField] private float moveSpeed = 7f;  //serves as base speed
-    private float defaultSpeed;                     //used to store base speed
-
     [SerializeField] private float fireRate = 1.5f;
+    private float defaultSpeed;                     //used to store base speed
     private float fireTimer = 0;
 
     private float borderXRange = 9.4f;
