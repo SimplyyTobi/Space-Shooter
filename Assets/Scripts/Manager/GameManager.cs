@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private enum GameState
+    {
+        Normal,
+        BossFight
+    }
+    private GameState currentState;
+
     private UIManager uiManager;
     private PlayerHealth playerHealth;
     private SpawnManager spawnManager;
-    private Asteroid asteroid;
 
     [SerializeField] private bool isPaused = false;
 
@@ -16,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int difficultyThreshold = 100;
     [SerializeField] private int difficultyLevel = 0;
     [SerializeField] private float enemySpawnRateDecreasePerLevel = 0.65f;
-    [SerializeField] private float asteroidSpeedIncrease = 2.5f;
+    [SerializeField] private int bossThreshold = 1000;
 
     private void Awake()
     {
@@ -24,6 +31,12 @@ public class GameManager : MonoBehaviour
         if (uiManager == null)
         {
             Debug.LogError("UIManager (script) not found on GameManager!");
+        }
+
+        spawnManager = FindObjectOfType<SpawnManager>();
+        if (spawnManager == null)
+        {
+            Debug.LogError("SpawnManager (script) not found on GameManager!");
         }
 
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -35,12 +48,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("PlayerHealth (script) not found on GameManager!");
         }
+    }
 
-        spawnManager = FindObjectOfType<SpawnManager>();
-        if (spawnManager == null)
-        {
-            Debug.LogError("SpawnManager (script) not found on GameManager!");
-        }
+    private void Start()
+    {
+        SetGameState(GameState.Normal);
     }
 
     private void Update()
@@ -52,11 +64,34 @@ public class GameManager : MonoBehaviour
 
         CheckForDifficultyIncrease();
     }
+
+    #region Game State Management
+    private void SetGameState(GameState newState)
+    {
+        currentState = newState;
+
+        switch (newState)
+        {
+            case GameState.Normal:
+                spawnManager.StartSpawning();
+                break;
+
+            case GameState.BossFight:
+                //spawnManager.StopSpawning();
+                spawnManager.SpawnBoss();
+                break;
+        }
+    }
+
+    #endregion
+
+    #region PlayerDeathHandling
     private void HandlePlayerDeath()
     {
         uiManager.DisplayGameOverScreen();
         Time.timeScale = 0;
     }
+    #endregion
 
     #region Menu Options
     public void RestartGame()
@@ -100,18 +135,23 @@ public class GameManager : MonoBehaviour
     {
         //Checks if the player score has crossed the current difficultyThreshold
         int playerScore = uiManager.PlayerScore;
+
+        if (playerScore >= bossThreshold)
+        {
+            SetGameState(GameState.BossFight);
+            bossThreshold += 1000;
+        }
+
         while (playerScore >= difficultyThreshold)
         {
-            difficultyThreshold += 100;
             IncreaseDifficulty();
+            difficultyThreshold += 100;
         }
     }
 
     private void IncreaseDifficulty()
     {
         spawnManager.IncreaseEnemySpawnRate(enemySpawnRateDecreasePerLevel);
-        //asteroid.IncreaseMoveSpeed(asteroidSpeedIncrease);
-            //Needs fix: Error when this script is called and there is no asteroid currently instantiated!
 
         difficultyLevel++;
         Debug.Log("Difficulty increase!");

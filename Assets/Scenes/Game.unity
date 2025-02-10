@@ -3200,6 +3200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218c75ebb51f1bd4bb1b4f36469aa72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSpawn: 1
+  spawnBorderXRange: 8
   enemyPrefabs:
   - {fileID: 4234643948918925980, guid: 7e561c59dbe23784c9b8a1438cadf662, type: 3}
   - {fileID: 8741242028990631344, guid: fe99732ab5cdae24a9c34cf99489a829, type: 3}
@@ -3219,6 +3221,8 @@ MonoBehaviour:
   asteroidContainer: {fileID: 1490854249}
   asteroidSpawnRateMax: 20
   asteroidSpawnRateMin: 10
+  bossPrefabs:
+  - {fileID: 6628411866483663274, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
 --- !u!4 &2111369749
 Transform:
   m_ObjectHideFlags: 0
@@ -3416,80 +3420,7 @@ MonoBehaviour:
   difficultyThreshold: 100
   difficultyLevel: 0
   enemySpawnRateDecreasePerLevel: 0.75
-  asteroidSpeedIncrease: 2.5
---- !u!1001 &3494684894795048404
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448488814983596829, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500658051111241090, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684680156517995790, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: enemyContainer
-      value: 
-      objectReference: {fileID: 741928515}
-    - target: {fileID: 6628411866483663274, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_Name
-      value: UFOBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 9089030601243847789, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_Size.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9089030601243847789, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
-      propertyPath: m_Size.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 15299f18e97e6c94b85c91f5afdd3832, type: 3}
+  bossThreshold: 10
 --- !u!1001 &6723174938525114955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3592,4 +3523,3 @@ SceneRoots:
   - {fileID: 1027348233}
   - {fileID: 638991560}
   - {fileID: 816995647}
-  - {fileID: 3494684894795048404}

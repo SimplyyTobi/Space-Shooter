@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Header("General Spawn Settings")]
+    [SerializeField] private bool canSpawn = true;
+    [SerializeField] private float spawnBorderXRange = 8f;
+
     [Header("Enemy Spawn Settings")]
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private Transform enemyContainer;
@@ -28,8 +32,8 @@ public class SpawnManager : MonoBehaviour
     private float asteroidSpawnRate;
     private float asteroidSpawnTimer = 0f;
 
-    private float spawnBorderXRange = 8f;
-
+    [Header("Boss Spawn Settings")]
+    [SerializeField] private GameObject[] bossPrefabs;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,8 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canSpawn) return;      //Stop spawning any enemies.
+
         #region Enemy Spawn
         enemySpawnTimer += Time.deltaTime;
         if (enemySpawnTimer > enemySpawnRate)
@@ -75,6 +81,41 @@ public class SpawnManager : MonoBehaviour
         #endregion 
     }
 
+    #region Public Methods
+    
+    public void StartSpawning()
+    {
+        canSpawn = true;
+    }
+
+    public void StopSpawning()
+    {
+        canSpawn = false;
+    }
+    
+    public void IncreaseEnemySpawnRate(float amount)    //Naming-Note: "Increase" means quicker/faster spawns -> logically, spawnRate interval numbers are actually decreased!
+    {
+        enemySpawnRateMax -= amount;
+        enemySpawnRateMin -= amount;
+
+        if (enemySpawnRateMin < 1)
+        {
+            enemySpawnRateMin = 1;
+        }
+        if (enemySpawnRateMax < 1)
+        {
+            enemySpawnRateMax = 1;
+        }
+    }
+
+    public void SpawnBoss()
+    {
+        int randomBossIndex = Random.Range(0, bossPrefabs.Length);
+        Instantiate(bossPrefabs[randomBossIndex], transform.position, Quaternion.identity, enemyContainer);
+    }
+    #endregion
+
+    #region Private Helper Methods
     private void SpawnEnemy()
     {
         int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
@@ -102,18 +143,5 @@ public class SpawnManager : MonoBehaviour
         return spawnRange;
     }
 
-    public void IncreaseEnemySpawnRate(float amount)    //Naming-Note: "Increase" means quicker/faster spawns -> logically, spawnRate interval numbers are actually decreased!
-    {
-        enemySpawnRateMax -= amount;
-        enemySpawnRateMin -= amount;
-
-        if (enemySpawnRateMin < 1)
-        {
-            enemySpawnRateMin = 1;
-        }
-        if (enemySpawnRateMax < 1)
-        {
-            enemySpawnRateMax = 1;
-        }
-    }
+    #endregion 
 }

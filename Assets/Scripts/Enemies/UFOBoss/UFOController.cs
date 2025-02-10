@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UFOController : MonoBehaviour
@@ -14,7 +15,7 @@ public class UFOController : MonoBehaviour
     [Header("Boss Settings")]
     [SerializeField] private int health = 25;   //something divisible by five, since boss UI has five UI states (lights of UFO)
     private int healthBeforeNextSprite;
-    private int healthDividedByFive;
+    private int healthPerSprite;
     [SerializeField] private float moveSpeedNormal = 5f;
     [SerializeField] private float moveSpeedEnraged = 10f;
     [SerializeField] private float movementRangeX = 3f;
@@ -25,6 +26,12 @@ public class UFOController : MonoBehaviour
 
     [SerializeField] private bool isEnraged = false;
     [SerializeField] private bool isAlive = true;
+    private bool isInvulnerable;
+
+    [Header("Intro Sequence")]
+    [SerializeField] private float stayPointY = 3.75f;
+    [SerializeField] private float introMoveSpeed = 0.7f;
+    [SerializeField] private float introWait = 2f;
 
     private void Awake()
     {
@@ -44,62 +51,34 @@ public class UFOController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isInvulnerable = true;
         currentSpriteIndex = 0;
-        healthDividedByFive = health / 5;
-        healthBeforeNextSprite = healthDividedByFive;
+        healthPerSprite = health / 5;
+        healthBeforeNextSprite = healthPerSprite;
 
-        StartCoroutine(StartMovement());
+        StartCoroutine(IntroMovement());
+    }
+
+    private IEnumerator IntroMovement()
+    {
+        Vector3 targetPoint = new Vector3(0, stayPointY, transform.position.z);
+
+        while (Vector3.Distance(transform.position, targetPoint) > 0.01f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPoint, introMoveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(introWait);
+
+        isInvulnerable = false;
+        StartCoroutine(MovementLoop());
         StartCoroutine(AttackLoop());
     }
 
-    private void TakeDamage()
+    private IEnumerator MovementLoop()
     {
-        health--;                               //Boss health overall
-        if (health <= 0)
-        {
-            Die();
-        }
-
-        if (health <= 10 && !isEnraged)         //for now hardcoded
-        {
-            isEnraged = true;
-        }
-
-        healthBeforeNextSprite--;               //Counter until next sprite change
-        if (healthBeforeNextSprite == 0)
-        {
-            currentSpriteIndex++;               //Increase sprite index
-            ChangeSprite(currentSpriteIndex);
-
-            healthBeforeNextSprite = healthDividedByFive;
-        }
-    }
-
-    private void ChangeSprite(int index)
-    {
-        if (currentSpriteIndex < ufoSprites.Length)
-        {
-            spriteRenderer.sprite = ufoSprites[index];
-        }
-    }
-
-    private void Die()
-    {
-        isAlive = false;
-        Debug.Log("Boss defeated!");
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("PlayerLaser"))
-        {
-            Destroy(other.gameObject);
-            TakeDamage();
-        }
-    }
-
-    private IEnumerator StartMovement()
-    {
+        //Moves left and right between to y-positions
         Vector3 direction = Vector3.right;
 
         while (isAlive)
@@ -138,13 +117,62 @@ public class UFOController : MonoBehaviour
     {
         int attackIndex = Random.Range(0, 3);   //Three different attacks
 
-        switch(attackIndex)
+        switch (attackIndex)
         {
             //ToDo
             case 0:
                 ufoAttacks.DeployAliens();
                 break;
 
+        }
+    }
+
+    private void TakeDamage()
+    {
+        if (isInvulnerable) return;             //Cannot take damage
+
+        health--;                               //Boss health overall
+        if (health <= 0)
+        {
+            Die();
+        }
+
+        if (health <= 10 && !isEnraged)         //for now hardcoded
+        {
+            isEnraged = true;
+        }
+
+        healthBeforeNextSprite--;               //Counter until next sprite change
+        if (healthBeforeNextSprite == 0)
+        {
+            currentSpriteIndex++;               //Increase sprite index
+            ChangeSprite(currentSpriteIndex);
+
+            healthBeforeNextSprite = healthPerSprite;
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
+        isAlive = false;
+        Debug.Log("Boss defeated!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("PlayerLaser"))
+        {
+            Destroy(other.gameObject);
+            TakeDamage();
+        }
+    }
+
+    private void ChangeSprite(int index)
+    {
+        if (currentSpriteIndex < ufoSprites.Length)
+        {
+            spriteRenderer.sprite = ufoSprites[index];
         }
     }
 
