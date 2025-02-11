@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
-public class UFOController : MonoBehaviour
+public class UFOController : MonoBehaviour, IBoss
 {
+    public event Action OnBossDefeated;
+
     private SpriteRenderer spriteRenderer;
     private UFOAttacks ufoAttacks;
 
@@ -115,7 +118,7 @@ public class UFOController : MonoBehaviour
 
     private void RandomAttack()
     {
-        int attackIndex = Random.Range(0, 3);   //Three different attacks
+        int attackIndex = UnityEngine.Random.Range(0, 3);   //Three different attacks
 
         switch (attackIndex)
         {
@@ -154,9 +157,10 @@ public class UFOController : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
         isAlive = false;
-        Debug.Log("Boss defeated!");
+        OnBossDefeated?.Invoke();
+
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

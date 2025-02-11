@@ -108,10 +108,13 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public void SpawnBoss()
+    public IBoss SpawnBoss()        //Returns boss instance to GameManager for Event
     {
         int randomBossIndex = Random.Range(0, bossPrefabs.Length);
-        Instantiate(bossPrefabs[randomBossIndex], transform.position, Quaternion.identity, enemyContainer);
+        GameObject bossInstance = Instantiate(bossPrefabs[randomBossIndex], transform.position, Quaternion.identity, enemyContainer);
+
+        IBoss boss = bossInstance.GetComponent<IBoss>();
+        return boss;
     }
     #endregion
 

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int difficultyLevel = 0;
     [SerializeField] private float enemySpawnRateDecreasePerLevel = 0.65f;
     [SerializeField] private int bossThreshold = 1000;
+    private bool isBossActive;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        isBossActive = false;
         SetGameState(GameState.Normal);
     }
 
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
         }
 
         CheckForDifficultyIncrease();
+        CheckForBoss();
     }
 
     #region Game State Management
@@ -77,19 +80,31 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.BossFight:
-                //spawnManager.StopSpawning();
-                spawnManager.SpawnBoss();
+                spawnManager.StopSpawning();
+                isBossActive = true;
+
+                IBoss boss = spawnManager.SpawnBoss();
+                if (boss != null)
+                {
+                    boss.OnBossDefeated += HandleBossDefeat;
+                }
                 break;
         }
     }
 
     #endregion
 
-    #region PlayerDeathHandling
+    #region Event Handling
     private void HandlePlayerDeath()
     {
         uiManager.DisplayGameOverScreen();
         Time.timeScale = 0;
+    }
+
+    private void HandleBossDefeat()
+    {
+        isBossActive = false;
+        SetGameState(GameState.Normal);
     }
     #endregion
 
@@ -133,15 +148,9 @@ public class GameManager : MonoBehaviour
     #region Difficulty
     private void CheckForDifficultyIncrease()
     {
-        //Checks if the player score has crossed the current difficultyThreshold
         int playerScore = uiManager.PlayerScore;
 
-        if (playerScore >= bossThreshold)
-        {
-            SetGameState(GameState.BossFight);
-            bossThreshold += 1000;
-        }
-
+        //Checks if the player score has crossed the current difficultyThreshold
         while (playerScore >= difficultyThreshold)
         {
             IncreaseDifficulty();
@@ -155,6 +164,17 @@ public class GameManager : MonoBehaviour
 
         difficultyLevel++;
         Debug.Log("Difficulty increase!");
+    }
+
+    private void CheckForBoss()
+    {
+        int playerScore = uiManager.PlayerScore;
+
+        if (playerScore >= bossThreshold && !isBossActive)
+        {
+            bossThreshold += 1000;
+            SetGameState(GameState.BossFight);
+        }
     }
 
     #endregion
