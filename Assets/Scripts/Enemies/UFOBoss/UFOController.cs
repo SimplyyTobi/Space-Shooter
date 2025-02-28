@@ -10,6 +10,7 @@ public class UFOController : MonoBehaviour, IBoss
     public event Action OnBossDefeated;
 
     private SpriteRenderer spriteRenderer;
+    private SpriteEffects spriteEffects;
     private UFOAttacks ufoAttacks;
 
     [SerializeField] private Sprite[] ufoSprites;
@@ -42,6 +43,12 @@ public class UFOController : MonoBehaviour, IBoss
         if (spriteRenderer == null)
         {
             Debug.LogError("Sprite Renderer on UFOController (script) not found!");
+        }
+
+        spriteEffects = GetComponent<SpriteEffects>();
+        if (spriteEffects == null)
+        {
+            Debug.LogError("SpriteEffects (script) on UFOController (script) not found!");
         }
 
         ufoAttacks = GetComponent<UFOAttacks>();
@@ -132,9 +139,11 @@ public class UFOController : MonoBehaviour, IBoss
 
     private void TakeDamage()
     {
-        if (isInvulnerable) return;             //Cannot take damage
+        if (isInvulnerable) return;
 
-        health--;                               //Boss health overall
+        spriteEffects.DamageEffect();
+
+        health--;                               
         if (health <= 0)
         {
             Die();
@@ -148,7 +157,7 @@ public class UFOController : MonoBehaviour, IBoss
         healthBeforeNextSprite--;               //Counter until next sprite change
         if (healthBeforeNextSprite == 0)
         {
-            currentSpriteIndex++;               //Increase sprite index
+            currentSpriteIndex++;               
             ChangeSprite(currentSpriteIndex);
 
             healthBeforeNextSprite = healthPerSprite;

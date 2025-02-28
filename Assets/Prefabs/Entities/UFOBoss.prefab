@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 448488814983596829}
   - component: {fileID: 5467198080163751951}
-  - component: {fileID: 8391205932472879490}
   - component: {fileID: 4059501059009487710}
+  - component: {fileID: 8391205932472879490}
   - component: {fileID: 4684680156517995790}
+  - component: {fileID: 5781875976658731216}
   m_Layer: 0
   m_Name: UFOBoss
   m_TagString: Enemy
@@ -89,36 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8391205932472879490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6628411866483663274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b202051d0a580bf4a99d1e3bbbebf8d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ufoSprites:
-  - {fileID: 718531697, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-  - {fileID: 576118416, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-  - {fileID: 1595661850, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-  - {fileID: -510098321, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-  - {fileID: -1435469081, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-  - {fileID: -735032547, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
-  health: 25
-  moveSpeedNormal: 1.5
-  moveSpeedEnraged: 3
-  movementRangeX: 3
-  attackIntervalNormal: 5
-  attackIntervalEnraged: 3
-  isEnraged: 0
-  isAlive: 1
-  stayPointY: 3.75
-  introMoveSpeed: 0.7
-  introWait: 2
 --- !u!70 &4059501059009487710
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,6 +125,36 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.2}
   m_Size: {x: 4.3, y: 0.45}
   m_Direction: 1
+--- !u!114 &8391205932472879490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628411866483663274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b202051d0a580bf4a99d1e3bbbebf8d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ufoSprites:
+  - {fileID: 718531697, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: 576118416, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: 1595661850, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: -510098321, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: -1435469081, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  - {fileID: -735032547, guid: af16ac1bf21588c4bac5b9b39df64bc3, type: 3}
+  health: 25
+  moveSpeedNormal: 1.5
+  moveSpeedEnraged: 3
+  movementRangeX: 3
+  attackIntervalNormal: 5
+  attackIntervalEnraged: 3
+  isEnraged: 0
+  isAlive: 1
+  stayPointY: 3.75
+  introMoveSpeed: 0.7
+  introWait: 2
 --- !u!114 &4684680156517995790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +171,22 @@ MonoBehaviour:
   enemyContainer: {fileID: 0}
   ufoAmountNormal: 3
   ufoAmountEnraged: 5
+--- !u!114 &5781875976658731216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628411866483663274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92293b8f0d8394345aa6058e3468a838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageColor: {r: 1, g: 0.3726415, b: 0.3726415, a: 0}
+  healColor: {r: 0, g: 1, b: 0, a: 0}
+  transitionTime: 0.2
+  fullColorDuration: 0.1
 --- !u!1 &7980701899096755930
 GameObject:
   m_ObjectHideFlags: 0
