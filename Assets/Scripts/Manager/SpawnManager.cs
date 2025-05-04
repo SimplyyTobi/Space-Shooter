@@ -118,7 +118,7 @@ public class SpawnManager : MonoBehaviour
     }
     #endregion
 
-    #region Private Helper Methods
+    #region Spawn Methods
     private void SpawnEnemy()
     {
         int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);

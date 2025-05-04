@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         if (playerScore >= bossThreshold && !isBossActive)
         {
-            bossThreshold += 1000;
+            bossThreshold += 100;
             SetGameState(GameState.BossFight);
         }
     }

@@ -3420,7 +3420,7 @@ MonoBehaviour:
   difficultyThreshold: 100
   difficultyLevel: 0
   enemySpawnRateDecreasePerLevel: 0.75
-  bossThreshold: 100
+  bossThreshold: 300
 --- !u!1001 &6723174938525114955
 PrefabInstance:
   m_ObjectHideFlags: 0
